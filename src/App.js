@@ -1,11 +1,14 @@
 import React from 'react';
-import Key from './components/Key';
+import Keys from './components/Keys';
 
 const App = () => {
 
   return (
     <>
-      <Key />
+      <Keys 
+
+      />
+      
     </>
   )
 }
