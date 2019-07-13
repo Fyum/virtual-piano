@@ -1,11 +1,11 @@
 import React from 'react';
-import Keys from './components/Keys';
+import Frame from './components/Frame';
 
 const App = () => {
 
   return (
     <>
-      <Keys 
+      <Frame 
 
       />
       
