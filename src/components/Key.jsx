@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import MIDISounds from 'midi-sounds-react';
 
 const StyledKey = styled.div`
   display: inline-block
@@ -26,12 +25,6 @@ const StyledEnharmonicKey = styled.div`
   top: 0
   margin-left: -15px
 `
-
-const StyledAudio = styled.div`
-  visibility: hidden
-  width: 0
-  height: 0
-`
 const Key = ({
   id,
   name,
@@ -39,26 +32,21 @@ const Key = ({
   number,
   octave,
   setPressedKey,
+  playSound,
 }) => {
   const [active, setActive] = useState(false);
 
-  const playTestInstrument = () => {
-    MIDISounds.midiSounds.playChordNow(0, [octave*12+number], 5);
-  }
-
   const handleKeyDown = () => {
     setActive(true); 
-    playTestInstrument();
+    playSound(octave, number);
     setPressedKey(name);
   }
 
-
   return (
     <>
-
       <StyledKey
         onMouseDown={() => { setActive(true);}}
-        onTouchStart={handleKeyDown}
+        onTouchStart={(handleKeyDown)}
         onMouseUp={() => { setActive(false) }}
         onTouchEnd={() => { setActive(false) }}
       >
@@ -71,9 +59,6 @@ const Key = ({
               {name}
             </StyledEnharmonicKey>
         }
-        <StyledAudio>
-          <MIDISounds style={{ visibility: 'hidden' }} ref={(ref) => (MIDISounds.midiSounds = ref)} appElementName="root" instruments={[3]} />
-        </StyledAudio>
       </StyledKey>
     </>
   )
