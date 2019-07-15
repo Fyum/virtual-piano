@@ -16,9 +16,15 @@ const Frame = ({
   const [pressedKey, setPressedKey] = useState(null);
   const [pressedKeys, setPressedKeys] = useState([]);
 
+  useEffect(() => {
+    if(pressedKey){
+      setPressedKeys(pressedKeys.concat(pressedKey));
+    }
+  }, [pressedKey])
+
   return (
     <>
-      Pressed key: {pressedKey}
+      Pressed keys: {pressedKeys && pressedKeys.join(',')}
       <StyledFrame>
         <Keys
           items={keys}
