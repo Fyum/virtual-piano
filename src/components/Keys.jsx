@@ -22,6 +22,14 @@ const Keys = ({
     MIDISounds.midiSounds.playChordNow(0, [octave * 12 + number], 5);
   }
 
+  const playComposition = () => {
+    
+    setInterval(() => {
+
+      MIDISounds.midiSounds.playChordNow(0, [3 * 12 + 10], 5);
+    }, 2000);
+  }
+
   return (
     <>
       <StyledKeys>

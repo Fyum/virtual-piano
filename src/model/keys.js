@@ -1,18 +1,7 @@
 import KEY_TYPES from './enum/key_types';
-// TODO change the id system
 const initialKeys = [
-  {
-    name: 'C',
-    type: KEY_TYPES.NATURAL,
-    id: 0,
-    number: 0,
-  },
-  {
-    name: 'C#',
-    type: KEY_TYPES.ENHARMONIC,
-    id: 1,
-    number: 1,
-  },
+  { name: 'C', type: KEY_TYPES.NATURAL, id: 0, number: 0 },
+  { name: 'C#', type: KEY_TYPES.ENHARMONIC, id: 1, number: 1 },
   {
     name: 'D',
     type: KEY_TYPES.NATURAL,
@@ -75,11 +64,17 @@ const initialKeys = [
   }
 ]
 
-// 0 -> 11
-const octave1 = initialKeys.map((x, i) => ({ ...x, octave: 3, id: 12 + i })); // 12 -> 23
-const octave2 = initialKeys.map((x, i) => ({ ...x, octave: 4, id: 24 + i }));  // 24 -> 35
-const octave3 = initialKeys.map((x, i) => ({ ...x, octave: 5, id: 36 + i })); // 36 -> 47
-const octave4 = initialKeys.map((x, i) => ({ ...x, octave: 6, id: 48 + i })); // 48 -> 59
+const createKeys = (octave) =>
+  initialKeys.map(x => ({
+    ...x,
+    octave,
+    id: `${x.name}-${octave}`
+  }));
+
+const octave1 = createKeys(3)
+const octave2 = createKeys(4)
+const octave3 = createKeys(5)
+const octave4 = createKeys(6)
 const keys = [...octave1, ...octave2, ...octave3, ...octave4];
 
 export default keys;

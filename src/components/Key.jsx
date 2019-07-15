@@ -42,13 +42,17 @@ const Key = ({
     setPressedKey(name);
   }
 
+  const handleKeyUp = () => {
+    setActive(false);
+  }
+
   return (
     <>
       <StyledKey
-        onMouseDown={() => { setActive(true);}}
-        onTouchStart={(handleKeyDown)}
-        onMouseUp={() => { setActive(false) }}
-        onTouchEnd={() => { setActive(false) }}
+        // onMouseDown={handleKeyDown} // TODO find out why it is bugged
+        onTouchStart={handleKeyDown}
+        // onMouseUp={handleKeyUp}
+        onTouchEnd={handleKeyUp}
       >
         {
           type === 'NATURAL'
