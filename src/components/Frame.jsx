@@ -4,9 +4,23 @@ import Keys from './Keys';
 import keysModel from '../model/keys';
 
 const StyledFrame = styled.div`
-  position: absolute;
-  margin: 20% 0;
+  position: relative;
+  margin: 10% 0 10% 0;
   padding: 0 10%;
+`
+
+const StyledPressedKeys = styled.div`
+  display: block;
+  text-align: center;
+  margin-top: 10%;
+  padding: 0 400px;
+  font-size: 2em;
+  width: 1500px;
+`
+
+const StyledPressedKey = styled.div`
+  display: inline-block;
+  margin: 0 20px;
 `
 
 const Frame = ({
@@ -24,13 +38,15 @@ const Frame = ({
 
   return (
     <>
-      Pressed keys: {pressedKeys && pressedKeys.join(',')}
       <StyledFrame>
         <Keys
           items={keys}
           setPressedKey={setPressedKey}
         />
       </StyledFrame>
+      <StyledPressedKeys>
+        { pressedKeys && pressedKeys.map(x => <StyledPressedKey>{x}</StyledPressedKey>) }
+      </StyledPressedKeys>
     </>
   )
 }

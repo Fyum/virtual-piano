@@ -23,12 +23,103 @@ const Keys = ({
   }
 
   const playComposition = () => {
-    
-    setInterval(() => {
+    const composition = [
+      {
+        "midi": 57,
+        "time": 5
+      },
+      {
+        "midi": 57,
+        "time": 0.5
+      },
+      {
+        "midi": 45,
+        "type": 'BASS',
+        "time": 0
+      },
+      {
+        "midi": 61,
+        "time": 1
+      },
+      {
+        "midi": 62,
+        "time": 0.5
+      },
+      {
+        "midi": 45,
+        "type": 'BASS',
+        "time": 0
+      },
+      {
+        "midi": 64,
+        "time": 1
+      },
+      {
+        "midi": 69,
+        "time": 0.5
+      },
+      {
+        "midi": 45,
+        "type": 'BASS',
+        "time": 0
+      },
+      {
+        "midi": 67,
+        "time": 1
+      },
+      {
+        "midi": 65,
+        "time": 0.5
+      },
+      {
+        "midi": 45,
+        "type": 'BASS',
+        "time": 0
+      },
+      {
+        "midi": 64,
+        "time": 1.5
+      },
+      {
+        "midi": 60,
+        "time": 1
+      },
+      {
+        "midi": 64,
+        "time": 0.5
+      },
+      {
+        "midi": 59,
+        "time": 1
+      },
+      {
+        "midi": 62,
+        "time": 0.5
+      },
+      {
+        "midi": 57,
+        "time": 1
+      }
+    ];
 
-      MIDISounds.midiSounds.playChordNow(0, [3 * 12 + 10], 5);
-    }, 2000);
+    let index = 0;
+    let timeout = setTimeout(function rec (){
+      if(index >= composition.length){
+        console.log('Timeout cleared');
+        clearTimeout(timeout);
+        return;
+      }
+      const x = composition[index++]
+      console.log('Playing', x);
+      MIDISounds.midiSounds.playChordNow(0, [x.midi], 5);
+      setTimeout(rec, 1000 * x.time)
+    }, 0)
   }
+
+  // setTimeout(() => {
+  //   console.log('start composition');
+  //   playComposition();
+  // }, 10000);
 
   return (
     <>

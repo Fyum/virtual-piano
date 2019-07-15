@@ -38,8 +38,9 @@ const Key = ({
 
   const handleKeyDown = () => {
     setActive(true); 
+    console.log({id}, {octave}, {name}, {number})
     playSound(octave, number);
-    setPressedKey(name);
+    setPressedKey(octave * 12 + number);
   }
 
   const handleKeyUp = () => {
@@ -58,9 +59,11 @@ const Key = ({
           type === 'NATURAL'
             ? <StyledNaturalKey active={active}>
               {name}
+              <p>{octave * 12 + number}</p>
             </StyledNaturalKey>
             : <StyledEnharmonicKey active={active}>
               {name}
+              <p>{octave * 12 + number}</p>
             </StyledEnharmonicKey>
         }
       </StyledKey>
