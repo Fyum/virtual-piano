@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import KeySound from './KeySound';
 import MIDISounds from 'midi-sounds-react';
 
 const StyledKey = styled.div`
@@ -34,19 +33,24 @@ const StyledAudio = styled.div`
   height: 0
 `
 const Key = ({
+  id,
   name,
   type,
   number,
   octave,
+  setPressedKey,
 }) => {
-
   const [active, setActive] = useState(false);
-
 
   const playTestInstrument = () => {
     MIDISounds.midiSounds.playChordNow(0, [octave*12+number], 5);
   }
 
+  const handleKeyDown = () => {
+    setActive(true); 
+    playTestInstrument();
+    setPressedKey(name);
+  }
 
 
   return (
@@ -54,7 +58,7 @@ const Key = ({
 
       <StyledKey
         onMouseDown={() => { setActive(true);}}
-        onTouchStart={() => { setActive(true); playTestInstrument(); }}
+        onTouchStart={handleKeyDown}
         onMouseUp={() => { setActive(false) }}
         onTouchEnd={() => { setActive(false) }}
       >

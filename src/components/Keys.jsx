@@ -7,6 +7,7 @@ const StyledKeys = styled.div`
 `
 const Keys = ({
   items,
+  setPressedKey,
 }) => {
 
   return (
@@ -15,10 +16,12 @@ const Keys = ({
         {
           items.map(
             x => <Key 
+              id={x.id}
               name={x.name}
               type={x.type}
               number={x.number}
               octave={x.octave}
+              setPressedKey={setPressedKey}
             />
           )
         }
