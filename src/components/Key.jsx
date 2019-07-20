@@ -75,7 +75,7 @@ const Key = ({
 
   const handleKeyUp = () => {
     setActive(false);
-    if(lines.length > 5) { // Optimization so that it doesn't eat too much memory
+    if(lines.length > 5) { // TODO Optimization so that it doesn't eat too much memory, but it's quite buggy
       setLines([]);
     }
   }

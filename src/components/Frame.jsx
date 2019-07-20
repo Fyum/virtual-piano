@@ -5,7 +5,7 @@ import keysModel from '../model/keys';
 
 const StyledFrame = styled.div`
   position: relative;
-  margin: 40% 0 10% 0;
+  margin: 20% 0 10% 0;
   padding: 0 10%;
 `
 
