@@ -1,14 +1,13 @@
 import React from 'react';
-import Frame from './components/Frame';
+import FreePlay from './components/FreePlay';
+import CompositionPlay from './components/CompositionPlay';
 
 const App = () => {
 
   return (
     <>
-      <Frame 
-
-      />
-      
+    
+      <CompositionPlay />
     </>
   )
 }

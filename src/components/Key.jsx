@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
 const StyledKey = styled.div`
@@ -58,18 +58,23 @@ const Key = ({
   octave,
   setPressedKey,
   playSound,
+  isPlayed,
 }) => {
+  const [lines, setLines] = useState([]);
   const [active, setActive] = useState(false);
 
-  
-  const [lines, setLines] = useState([]);
+  useEffect(() => {
+    isPlayed 
+      ? handleKeyDown()
+      : handleKeyUp()
+    console.log('played key effect', isPlayed);
+  }, [isPlayed]);
 
   const handleKeyDown = () => {
-    setActive(true); 
     console.log({id}, {octave}, {name}, {number})
+    setActive(true);
     playSound(octave, number);
     setPressedKey(`${name}-${octave}`);
-
     setLines(lines.concat(1));
   }
 
