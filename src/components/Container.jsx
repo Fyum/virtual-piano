@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const StyledContainer = styled.div`
   position: relative;
-  margin-top: ${props => props.marginTop || '20%' };
-  margin-bottom: ${props => props.marginBottom || '20%' };
+  margin-top: ${props => props.marginTop || '10%' };
+  margin-bottom: ${props => props.marginBottom || '10%' };
   padding: 0 10%;
 `
 const Container = props => {

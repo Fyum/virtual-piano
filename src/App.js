@@ -7,8 +7,8 @@ const App = () => {
   return (
     <>
     
-      {/* <FreePlay /> */}
-      <CompositionPlay />
+      <FreePlay />
+      {/* <CompositionPlay /> */}
     </>
   )
 }

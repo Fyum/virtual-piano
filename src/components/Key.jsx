@@ -15,7 +15,7 @@ const StyledNaturalKey = styled.div`
 
 const StyledEnharmonicKey = styled.div`
   border: 1px solid black
-  width: 2.2vw
+  width: 2vw
   height: 18vh
   border-radius: 5px
   display: inline-block
@@ -40,14 +40,20 @@ const heightAnimation = css`
 `
 
 const StyledLine = styled.div`
-  width: 50px;
-  border-radius: 100%;
+  width:  1.5vw;
+  border-radius: 5px;
   position: absolute;
   top: 0px;
   background-color: #8cf1f5;
   height: 50px;
   animation: ${heightAnimation};
   animation-fill-mode: forwards;
+`
+
+const StyledKeyText = styled.span`
+  font-size: 1vw;
+  display: block;
+  visibility: hidden; // TODO hide it for now
 `
 
 const Key = ({
@@ -58,20 +64,20 @@ const Key = ({
   octave,
   setPressedKey,
   playSound,
-  isPlayed,
+  isPlayed
 }) => {
   const [lines, setLines] = useState([]);
   const [active, setActive] = useState(false);
 
   useEffect(() => {
-    isPlayed 
+    isPlayed
       ? handleKeyDown()
       : handleKeyUp()
     console.log('played key effect', isPlayed);
   }, [isPlayed]);
 
   const handleKeyDown = () => {
-    console.log({id}, {octave}, {name}, {number})
+    console.log({ id }, { octave }, { name }, { number })
     setActive(true);
     playSound(octave, number);
     setPressedKey(`${name}-${octave}`);
@@ -80,14 +86,14 @@ const Key = ({
 
   const handleKeyUp = () => {
     setActive(false);
-    if(lines.length > 5) { // TODO Optimization so that it doesn't eat too much memory, but it's quite buggy
+    if (lines.length > 5) { // TODO Optimization so that it doesn't eat too much memory, but it's quite buggy
       setLines([]);
     }
   }
 
   return (
     <>
-      
+
       <StyledKey
         // onMouseDown={handleKeyDown} // TODO find out why it is bugged
         onTouchStart={handleKeyDown}
@@ -95,7 +101,7 @@ const Key = ({
         onTouchEnd={handleKeyUp}
       >
         {
-        lines && 
+          lines &&
           lines.map(x => (
             <StyledLine
               active={active}
@@ -106,12 +112,12 @@ const Key = ({
         {
           type === 'NATURAL'
             ? <StyledNaturalKey active={active}>
-              {name}
-              <p>{octave * 12 + number}</p>
+              <StyledKeyText>{name}</StyledKeyText>
+              <StyledKeyText>{octave * 12 + number}</StyledKeyText>
             </StyledNaturalKey>
             : <StyledEnharmonicKey active={active}>
-              {name}
-              <p>{octave * 12 + number}</p>
+              <StyledKeyText>{name}</StyledKeyText>
+              <StyledKeyText>{octave * 12 + number}</StyledKeyText>
             </StyledEnharmonicKey>
         }
       </StyledKey>
