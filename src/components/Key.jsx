@@ -7,23 +7,23 @@ const StyledKey = styled.div`
 `
 const StyledNaturalKey = styled.div`
     border: 1px solid black
-    width: 80px
-    height: 500px
+    width: 2.6vw
+    height: 30vh
     border-radius: 5px
     background-color: ${props => props.active ? '#8cf1f5' : 'white'}
   `
 
 const StyledEnharmonicKey = styled.div`
   border: 1px solid black
-  width: 40px
-  height: 350px
+  width: 2.2vw
+  height: 18vh
   border-radius: 5px
   display: inline-block
   background-color: ${props => props.active ? '#5ba8ab' : 'black'}
   color: white
   position: absolute
   top: 0
-  margin-left: -15px
+  margin-left: -1vw
 `
 
 const height = keyframes`
