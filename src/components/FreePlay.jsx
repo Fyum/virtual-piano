@@ -2,21 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Keys from './Keys';
 import Container from './Container';
+import PressedKeys from './PressedKeys';
 import keysModel from '../model/keys';
 import MIDISounds from 'midi-sounds-react';
 
 const StyledFreePlay = styled.div`
 `
 
-const StyledPressedKeys = styled.div`
-  text-align: center;
-  font-size: 1.2em;
-`
-
-const StyledPressedKey = styled.div`
-  display: inline-block;
-  margin: 0 20px;
-`
 const StyledAudio = styled.div`
   visibility: hidden
   width: 0
@@ -56,9 +48,9 @@ const FreePlay = ({
       </Container>
 
       <Container>
-        <StyledPressedKeys>
-          {pressedKeys && pressedKeys.map(x => <StyledPressedKey>{x}</StyledPressedKey>)}
-        </StyledPressedKeys>
+        <PressedKeys
+          items={pressedKeys}
+        />
       </Container>
     </>
   )

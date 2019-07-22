@@ -75,6 +75,11 @@ const octave1 = createKeys(3)
 const octave2 = createKeys(4)
 const octave3 = createKeys(5)
 const octave4 = createKeys(6)
-const keys = [...octave1, ...octave2, ...octave3, ...octave4];
+const keys = [
+  ...octave1, 
+  ...octave2, 
+  ...octave3, 
+  ...octave4
+];
 
 export default keys;

@@ -3,13 +3,16 @@ import styled from 'styled-components';
 
 const StyledContainer = styled.div`
   position: relative;
-  margin: 20% 0 10% 0;
+  margin-top: ${props => props.marginTop || '20%' };
+  margin-bottom: ${props => props.marginBottom || '20%' };
   padding: 0 10%;
 `
 const Container = props => {
-
   return (
-    <StyledContainer>
+    <StyledContainer 
+      marginTop={props.marginTop}
+      marginBottom={props.marginBottom}
+    >
       {props.children}
     </StyledContainer>
   )
