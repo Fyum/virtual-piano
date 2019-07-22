@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Keys from './Keys';
+import Container from './Container';
 import keysModel from '../model/keys';
 import MIDISounds from 'midi-sounds-react';
 
 const StyledFreePlay = styled.div`
-  position: relative;
-  margin: 20% 0 10% 0;
-  padding: 0 10%;
 `
 
 const StyledPressedKeys = styled.div`
-  display: block;
   text-align: center;
-  margin-top: 10%;
-  padding: 0 400px;
-  font-size: 2em;
-  width: 1500px;
+  font-size: 1.2em;
 `
 
 const StyledPressedKey = styled.div`
@@ -37,7 +31,7 @@ const FreePlay = ({
   const [pressedKeys, setPressedKeys] = useState([]);
 
   useEffect(() => {
-    if(pressedKey){
+    if (pressedKey) {
       setPressedKeys(pressedKeys.concat(pressedKey));
     }
   }, [pressedKey])
@@ -48,20 +42,24 @@ const FreePlay = ({
 
   return (
     <>
-      <StyledFreePlay>
-        <Keys
-          items={keys}
-          setPressedKey={setPressedKey}
-          playSound={playSound}
-        />
-      </StyledFreePlay>
-      <StyledPressedKeys>
-        { pressedKeys && pressedKeys.map(x => <StyledPressedKey>{x}</StyledPressedKey>) }
-      </StyledPressedKeys>
-    
-      <StyledAudio>
-        <MIDISounds style={{ visibility: 'hidden' }} ref={(ref) => (MIDISounds.midiSounds = ref)} appElementName="root" instruments={[3]} />
-      </StyledAudio>
+      <Container>
+        <StyledFreePlay>
+          <Keys
+            items={keys}
+            setPressedKey={setPressedKey}
+            playSound={playSound}
+          />
+        </StyledFreePlay>
+        <StyledAudio>
+          <MIDISounds style={{ visibility: 'hidden' }} ref={(ref) => (MIDISounds.midiSounds = ref)} appElementName="root" instruments={[3]} />
+        </StyledAudio>
+      </Container>
+
+      <Container>
+        <StyledPressedKeys>
+          {pressedKeys && pressedKeys.map(x => <StyledPressedKey>{x}</StyledPressedKey>)}
+        </StyledPressedKeys>
+      </Container>
     </>
   )
 }
