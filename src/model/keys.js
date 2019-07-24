@@ -64,22 +64,22 @@ const initialKeys = [
   }
 ]
 
-const createKeys = (octave) =>
+const buildKeysForOctave = (octave) =>
   initialKeys.map(x => ({
     ...x,
     octave,
     id: `${x.name}-${octave}`
   }));
 
-const octave1 = createKeys(3)
-const octave2 = createKeys(4)
-const octave3 = createKeys(5)
-const octave4 = createKeys(6)
-const keys = [
-  ...octave1, 
-  ...octave2, 
-  ...octave3, 
-  ...octave4
-];
+const buildKeys = (octaves) => {
+  let keys = [];
+  for(let i = 0; i < octaves; i++){
+    keys.push(...buildKeysForOctave(i + 1));
+  }
 
-export default keys;
+
+  console.log(keys);
+  return keys;
+}
+
+export default buildKeys;

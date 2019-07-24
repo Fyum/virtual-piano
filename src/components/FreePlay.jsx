@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Keys from './Keys';
 import Container from './Container';
 import PressedKeys from './PressedKeys';
-import keysModel from '../model/keys';
+import buildKeys from '../model/keys';
 import MIDISounds from 'midi-sounds-react';
 
 const StyledFreePlay = styled.div`
@@ -16,9 +16,9 @@ const StyledAudio = styled.div`
 `
 
 const FreePlay = ({
-
+  octaves,
 }) => {
-  const [keys, setKeys] = useState(keysModel);
+  const [keys, setKeys] = useState([]);
   const [pressedKey, setPressedKey] = useState(null);
   const [pressedKeys, setPressedKeys] = useState([]);
 
@@ -27,6 +27,12 @@ const FreePlay = ({
       setPressedKeys(pressedKeys.concat(pressedKey));
     }
   }, [pressedKey])
+
+  useEffect(() => {
+    if(octaves){
+      setKeys(buildKeys(octaves));
+    }
+  }, [octaves])
 
   const playSound = (octave, number) => {
     MIDISounds.midiSounds.playChordNow(0, [octave * 12 + number], 5);

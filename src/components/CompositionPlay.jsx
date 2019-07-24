@@ -68,7 +68,7 @@ const CompositionPlay = ({
 
   return (
     <>
-      <Container marginTop={'10%'} marginBottom={'0%'}>
+      <Container marginTop={'5%'} marginBottom={'0%'}>
         <StyledPlayButton onClick={playComposition}>
           Play
         </StyledPlayButton>
