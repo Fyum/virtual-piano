@@ -5,7 +5,7 @@ const StyledContainer = styled.div`
   position: relative;
   margin-top: ${props => props.marginTop || '10%' };
   margin-bottom: ${props => props.marginBottom || '10%' };
-  padding: 0 10%;
+  padding: 0 5%;
 `
 const Container = props => {
   return (

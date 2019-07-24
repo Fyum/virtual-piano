@@ -17,6 +17,7 @@ const StyledAudio = styled.div`
 
 const FreePlay = ({
   octaves,
+  initialOctave,
 }) => {
   const [keys, setKeys] = useState([]);
   const [pressedKey, setPressedKey] = useState(null);
@@ -29,10 +30,10 @@ const FreePlay = ({
   }, [pressedKey])
 
   useEffect(() => {
-    if(octaves){
-      setKeys(buildKeys(octaves));
+    if(octaves && initialOctave){
+      setKeys(buildKeys(octaves, initialOctave));
     }
-  }, [octaves])
+  }, [octaves, initialOctave])
 
   const playSound = (octave, number) => {
     MIDISounds.midiSounds.playChordNow(0, [octave * 12 + number], 5);

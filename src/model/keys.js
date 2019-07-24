@@ -71,11 +71,13 @@ const buildKeysForOctave = (octave) =>
     id: `${x.name}-${octave}`
   }));
 
-const buildKeys = (octaves) => {
+const buildKeys = (octaves, initialOctave) => {
   let keys = [];
   for(let i = 0; i < octaves; i++){
-    keys.push(...buildKeysForOctave(i + 1));
+    keys.push(...buildKeysForOctave(i + initialOctave));
   }
+
+  console.log(initialOctave)
 
 
   console.log(keys);
