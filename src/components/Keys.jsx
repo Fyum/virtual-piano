@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Key from './Key';
 
 const StyledKeys = styled.div`
-  display: flex;
 `
   
 const Keys = ({

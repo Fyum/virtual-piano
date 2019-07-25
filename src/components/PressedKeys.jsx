@@ -9,7 +9,12 @@ const StyledPressedKeys = styled.div`
 
 const StyledPressedKey = styled.div`
   display: inline-block;
-  margin: 0 20px;
+  margin: 3px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid white;
 `
 
 const PressedKeys = ({
@@ -17,7 +22,7 @@ const PressedKeys = ({
 }) => {
   return (
     <StyledPressedKeys>
-      { items && items.map(x => <StyledPressedKey>{x}</StyledPressedKey>) }
+      {items && items.map(x => <StyledPressedKey>{x}</StyledPressedKey>)}
     </StyledPressedKeys>
   )
 }

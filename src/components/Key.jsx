@@ -21,9 +21,10 @@ const StyledEnharmonicKey = styled.div`
   display: inline-block
   background-color: ${props => props.active ? '#5ba8ab' : 'black'}
   color: white
-  position: absolute
-  top: 0
-  margin-left: -1vw
+  position: relative;
+  top: 0;
+  left: 1.4vw;
+  margin-left: -3vw;
 `
 
 const height = keyframes`
