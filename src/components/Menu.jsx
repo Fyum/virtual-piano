@@ -35,38 +35,45 @@ const Menu = ({
   setOctaves,
   initialOctave,
   setInitialOctave,
+  displayNotes,
+  setDisplayNotes,
 }) => {
 
-  const incrementOctave = () => 
-    (octaves < MAX_OCTAVES_NUMBER) 
-      && setOctaves(octaves + 1)
+  const incrementOctave = () =>
+    (octaves < MAX_OCTAVES_NUMBER)
+    && setOctaves(octaves + 1)
 
-  const decrementOctave = () => 
-    (octaves > MIN_OCTAVES_NUMBER) 
-      && setOctaves(octaves - 1)
+  const decrementOctave = () =>
+    (octaves > MIN_OCTAVES_NUMBER)
+    && setOctaves(octaves - 1)
 
   const incrementInitialOctave = () =>
     (initialOctave < MAX_INITIAL_OCTAVE)
-      && setInitialOctave(initialOctave + 1)
+    && setInitialOctave(initialOctave + 1)
 
-  const decrementInitialOctave = () => 
+  const decrementInitialOctave = () =>
     (initialOctave > MIN_INITIAL_OCTAVE)
-      && setInitialOctave(initialOctave - 1)
+    && setInitialOctave(initialOctave - 1)
 
 
   return (
     <StyledMenu>
       <StyledMenuItem> {/* TODO refactor this into one component increment decrement + limits */}
-        Number of octave
+        <label>Number of octaves</label>
         <span onClick={decrementOctave}>-</span>
         <span>{octaves}</span>
         <span onClick={incrementOctave}>+</span>
       </StyledMenuItem>
       <StyledMenuItem>
-        Initial octave
+        <label>Initial octave</label>
         <span onClick={decrementInitialOctave}>-</span>
         <span>{initialOctave}</span>
         <span onClick={incrementInitialOctave}>+</span>
+      </StyledMenuItem>
+
+      <StyledMenuItem>
+        <input type="checkbox" value={displayNotes} onChange={() => setDisplayNotes(!displayNotes)}></input>
+        <label>Display notes</label>
       </StyledMenuItem>
     </StyledMenu>
   )

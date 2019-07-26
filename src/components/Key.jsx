@@ -8,7 +8,7 @@ const StyledKey = styled.div`
 const StyledNaturalKey = styled.div`
     border: 1px solid black
     width: 35px
-    height: 30vh
+    height: 220px
     border-radius: 5px
     margin: 0 0 20px 0
     background-color: ${props => props.active ? '#8cf1f5' : 'white'}
@@ -17,7 +17,7 @@ const StyledNaturalKey = styled.div`
 const StyledEnharmonicKey = styled.div`
   border: 1px solid black
   width: 25px
-  height: 18vh
+  height: 150px
   border-radius: 5px
   display: inline-block
   background-color: ${props => props.active ? '#5ba8ab' : 'black'}
@@ -52,10 +52,15 @@ const StyledLine = styled.div`
   animation-fill-mode: forwards;
 `
 
-const StyledKeyText = styled.span`
-  font-size: 1vw;
+const StyledKeyText = styled.div`
+  font-size: 0.8em;
   display: block;
-  visibility: hidden; // TODO hide it for now
+  position: relative;
+  top: 75%;
+  visibility: ${props => props.visible ? 'visible' : 'hidden'}
+  span {
+    display: block;
+  }
 `
 
 const Key = ({
@@ -66,7 +71,8 @@ const Key = ({
   octave,
   setPressedKey,
   playSound,
-  isPlayed
+  isPlayed,
+  displayNotes,
 }) => {
   const [lines, setLines] = useState([]);
   const [active, setActive] = useState(false);
@@ -114,12 +120,16 @@ const Key = ({
         {
           type === 'NATURAL'
             ? <StyledNaturalKey active={active}>
-              <StyledKeyText>{name}</StyledKeyText>
-              <StyledKeyText>{octave * 12 + number}</StyledKeyText>
+              <StyledKeyText visible={displayNotes}>
+                <span>{name}</span>
+                <span>{octave * 12 + number}</span>
+              </StyledKeyText>
             </StyledNaturalKey>
             : <StyledEnharmonicKey active={active}>
-              <StyledKeyText>{name}</StyledKeyText>
-              <StyledKeyText>{octave * 12 + number}</StyledKeyText>
+              <StyledKeyText visible={displayNotes}>
+                <span>{name}</span>
+                <span>{octave * 12 + number}</span>
+              </StyledKeyText>
             </StyledEnharmonicKey>
         }
       </StyledKey>

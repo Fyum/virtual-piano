@@ -18,6 +18,7 @@ const StyledAudio = styled.div`
 const FreePlay = ({
   octaves,
   initialOctave,
+  displayNotes,
 }) => {
   const [keys, setKeys] = useState([]);
   const [pressedKey, setPressedKey] = useState(null);
@@ -47,6 +48,7 @@ const FreePlay = ({
             items={keys}
             setPressedKey={setPressedKey}
             playSound={playSound}
+            displayNotes={displayNotes}
           />
         </StyledFreePlay>
         <StyledAudio>

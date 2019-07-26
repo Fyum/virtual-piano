@@ -10,6 +10,7 @@ const Keys = ({
   setPressedKey,
   playSound,
   playedKey,
+  displayNotes,
 }) => {
   console.log(playedKey);
 
@@ -32,6 +33,7 @@ const Keys = ({
               setPressedKey={setPressedKey}
               playSound={playSound}
               isPlayed={isPlayed(x)} 
+              displayNotes={displayNotes}
             />
           )
         }

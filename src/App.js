@@ -10,6 +10,7 @@ const App = () => {
 
   const [octaves, setOctaves] = useState(DEFAULT_OCTAVES);
   const [initialOctave, setInitialOctave] = useState(DEFAULT_INITIAL_OCTAVE);
+  const [displayNotes, setDisplayNotes] = useState(false);
   return (
     <>
     
@@ -18,10 +19,13 @@ const App = () => {
         setOctaves={setOctaves}
         initialOctave={initialOctave}
         setInitialOctave={setInitialOctave}
+        displayNotes={displayNotes}
+        setDisplayNotes={setDisplayNotes}
       />
       <FreePlay 
         octaves={octaves}
         initialOctave={initialOctave}
+        displayNotes={displayNotes}
       />
       {/* <CompositionPlay /> */}
     </>
