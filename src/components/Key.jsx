@@ -7,15 +7,16 @@ const StyledKey = styled.div`
 `
 const StyledNaturalKey = styled.div`
     border: 1px solid black
-    width: 2.6vw
+    width: 35px
     height: 30vh
     border-radius: 5px
+    margin: 0 0 20px 0
     background-color: ${props => props.active ? '#8cf1f5' : 'white'}
   `
 
 const StyledEnharmonicKey = styled.div`
   border: 1px solid black
-  width: 2vw
+  width: 25px
   height: 18vh
   border-radius: 5px
   display: inline-block
@@ -23,8 +24,8 @@ const StyledEnharmonicKey = styled.div`
   color: white
   position: relative;
   top: 0;
-  left: 1.4vw;
-  margin-left: -3vw;
+  left: 14px
+  margin-left: -27px
 `
 
 const height = keyframes`
@@ -41,7 +42,7 @@ const heightAnimation = css`
 `
 
 const StyledLine = styled.div`
-  width:  1.5vw;
+  width:  25px;
   border-radius: 5px;
   position: absolute;
   top: 0px;
