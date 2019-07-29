@@ -52,6 +52,12 @@ const StyledLine = styled.div`
   animation-fill-mode: forwards;
 `
 
+const StyledSvg = styled.svg`
+  position: absolute
+  animation: ${heightAnimation};
+  animation-fill-mode: forwards;
+`
+
 const StyledKeyText = styled.div`
   font-size: 0.8em;
   display: block;
@@ -111,10 +117,14 @@ const Key = ({
         {
           lines &&
           lines.map(x => (
-            <StyledLine
-              active={active}
-            >
-            </StyledLine>
+            // <StyledLine
+            //   active={active}
+            // >
+            // </StyledLine>
+             <StyledSvg height="100" width="20">
+              <line x1="0" y1="0" x2="0" y2="50" style={{stroke:'#8cf1f5',strokeWidth:'20'} }>
+                </line>
+            </StyledSvg>
           ))
         }
         {

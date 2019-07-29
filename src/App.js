@@ -22,6 +22,7 @@ const App = () => {
         displayNotes={displayNotes}
         setDisplayNotes={setDisplayNotes}
       />
+
       <FreePlay 
         octaves={octaves}
         initialOctave={initialOctave}
