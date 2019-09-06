@@ -90,37 +90,35 @@ const Key = ({
     console.log('played key effect', isPlayed);
   }, [isPlayed]);
 
-  const handleKeyDown = () => {
+  const handleKeyDown = (ev) => {
     console.log({ id }, { octave }, { name }, { number })
     setActive(true);
     playSound(octave, number);
     setPressedKey(`${name}-${octave}`);
     setLines(lines.concat(1));
+    if(ev) ev.preventDefault();
   }
 
-  const handleKeyUp = () => {
+  const handleKeyUp = (ev) => {
     setActive(false);
     if (lines.length > 5) { // TODO Optimization so that it doesn't eat too much memory, but it's quite buggy
       setLines([]);
     }
+    if(ev) ev.preventDefault();
   }
 
   return (
     <>
 
       <StyledKey
-        // onMouseDown={handleKeyDown} // TODO find out why it is bugged
+        onMouseDown={handleKeyDown}
         onTouchStart={handleKeyDown}
-        // onMouseUp={handleKeyUp}
+        onMouseUp={handleKeyUp}
         onTouchEnd={handleKeyUp}
       >
         {
           lines &&
           lines.map(x => (
-            // <StyledLine
-            //   active={active}
-            // >
-            // </StyledLine>
              <StyledSvg height="100" width="20">
               <line x1="0" y1="0" x2="0" y2="50" style={{stroke:'#8cf1f5',strokeWidth:'20'} }>
                 </line>
